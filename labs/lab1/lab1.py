@@ -48,10 +48,23 @@ def start():
     )
 
 def update():
-    
+    global counter 
+    '''
+    if rc.controller.was_pressed(rc.controller.Trigger.Right):
+        print("Accelerating forward...")
+        rc.drive.set_speed_angle(1,0)
+
+    if rc.controller.was_pressed(rc.controller.Trigger.Left):
+        print("Accelerating backward...")
+        rc.drive.set_speed_angle(-1,0)
+    '''
     if rc.controller.was_pressed(rc.controller.Button.A):
         print("Driving in a circle...")
         rc.drive.set_speed_angle(1,1)
+        
+    if rc.controller.was_pressed(rc.controller.Button.B):
+        print("Driving in a square...")
+        rc.drive.set_speed_angle(1,0)
         if counter % 4 == 0:
             rc.drive.set_speed_angle(0,1)
         rc.get_delta_time()
@@ -65,7 +78,7 @@ def update():
         print("Driving in an S...")
         rc.drive.set_speed_angle(1,-0.5)
         rc.drive.set_speed_angle(1,0.5)
-        rc.stop()
+        #rc.stop()
 
 ########################################################################################
 # DO NOT MODIFY: Register start and update and begin execution

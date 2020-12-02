@@ -2,7 +2,6 @@
 Copyright MIT and Harvey Mudd College
 MIT License
 Summer 2020
-
 Lab 1 - Driving in Shapes
 """
 
@@ -27,7 +26,6 @@ rc = racecar_core.create_racecar()
 # Functions
 ########################################################################################
 
-
 def start():
     """
     This function is run once every time the start button is pressed
@@ -49,32 +47,25 @@ def start():
         "    Y button = drive in a shape of your choice\n"
     )
 
-
 def update():
-    """
-    After start() is run, this function is run every frame until the back button
-    is pressed
-    """
-    # TODO (warmup): Implement acceleration and steering
-
-    #Driving in a circle (finished)
+    
     if rc.controller.was_pressed(rc.controller.Button.A):
         print("Driving in a circle...")
         rc.drive.set_speed_angle(1,1)
-
-    global counter
-    if rc.controller.was_pressed(rc.controller.Button.B):
-        print("Driving in a square...")
-        rc.drive.set_speed_angle(1,0)
         if counter % 4 == 0:
             rc.drive.set_speed_angle(0,1)
         rc.get_delta_time()
 
+    if rc.controller.was_pressed(rc.controller.Button.X):
+        print("Driving in an 8... ")
+        rc.drive.set_speed_angle(1,1)
+        rc.drive.set_speed_angle(-1,-1) 
 
-    # TODO (main challenge): Drive in a figure eight when the X button is pressed
-
-    # TODO (main challenge): Drive in a shape of your choice when the Y button
-    # is pressed
+    if rc.controller.was_pressed(rc.controller.Button.Y):
+        print("Driving in an S...")
+        rc.drive.set_speed_angle(1,-0.5)
+        rc.drive.set_speed_angle(1,0.5)
+        rc.stop()
 
 ########################################################################################
 # DO NOT MODIFY: Register start and update and begin execution
